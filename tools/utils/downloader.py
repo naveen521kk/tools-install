@@ -54,5 +54,6 @@ def download(url: str, file_path: Path, tool_name: str = None) -> Path:
             shutil.copyfile(os.fspath(cache_path), os.fspath(file_path))
             return file_path
     assert _download_from_url(url, file_path), "Something failed?"
-    cache.cache_file(tool_name, file_path)
+    if tool_name:
+        cache.cache_file(tool_name, file_path)
     return file_path

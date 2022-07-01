@@ -17,3 +17,8 @@ def hash_sha256(file_path: Path):
            chunk = f.read(_BLOCK_SIZE)
     return h.hexdigest()
 
+def verify_checksum(file_path: Path, checksum: str):
+    """
+    Verify the checksum of the file.
+    """
+    return hash_sha256(file_path) == checksum
