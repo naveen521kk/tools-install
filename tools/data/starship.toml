@@ -1,0 +1,7 @@
+version = '1.9.1'
+
+[urls]
+win32_url = 'https://github.com/starship/starship/releases/download/v{version}/starship-x86_64-pc-windows-msvc.zip'
+win32_hash = '5fe6a00b986c1a0771d4d248a455dcccf791e8a125ae48a4f7e4eb8b655587b1'
+linux_url = 'https://github.com/starship/starship/releases/download/v{version}/starship-x86_64-unknown-linux-gnu.tar.gz'
+linux_hash = 'cd05b6390251128e723bbbcbf21099b975a43058fbe57721eb3597be9f089aca'
