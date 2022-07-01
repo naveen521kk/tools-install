@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import tomli
 
 DATA_DIR = Path(__file__).parent.parent / "data"
