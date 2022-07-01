@@ -1,0 +1,3 @@
+[INSTALL_PATHS]
+win32 = r'C:\tools\bin'
+linux = '~/.local/bin'
