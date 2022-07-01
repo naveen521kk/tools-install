@@ -1,9 +1,12 @@
-from pathlib import Path
-import shutil
 import os
-from . import cache
-from rich.progress import Progress
+import shutil
+from pathlib import Path
+
 import requests
+from rich.progress import Progress
+
+from . import cache
+
 
 def _download_from_url(url: str, file_path: Path) -> bool:
     max_value = 100
