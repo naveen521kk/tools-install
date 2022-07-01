@@ -164,7 +164,7 @@ jupyter = ["ipywidgets (>=7.5.1,<8.0.0)"]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -192,7 +192,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "137d01b8e50bd54d9e517125b0b9ecd229a6498a9ea28af850488af68503cc5b"
+content-hash = "a1d4b66cd6f9acc848bd1f846114388643fa60999f16bad3a887584061bc133c"
 
 [metadata.files]
 black = [
