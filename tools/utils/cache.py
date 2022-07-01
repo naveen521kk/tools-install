@@ -46,7 +46,7 @@ def cache_file(tool_name: str, file_path: Path) -> Path:
     if is_cached(file_path.name, tool_name):
         return
     dir = get_cache_dir() / tool_name
-    dir.mkdir(exist_ok=True)
+    dir.mkdir(exist_ok=True, parents=True)
     cache_file = dir / file_path.name
     shutil.copyfile(file_path, cache_file)
     return cache_file
