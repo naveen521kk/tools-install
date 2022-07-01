@@ -130,3 +130,6 @@ dmypy.json
 
 *.tar.*
 *.zip
+
+# vscode specific stuff
+.vscode
