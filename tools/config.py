@@ -1,7 +1,9 @@
 """Read configuration file."""
-import tomli
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import tomli
+
 from utils.misc import ensure_install_path
 
 with open(Path(__file__).parent / 'config.toml', 'rb') as f:

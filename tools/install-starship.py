@@ -1,18 +1,20 @@
 # Define that this installs a tool.
 IS_TOOL = True
 
-import sys
-import shutil
 import os
+import shutil
+import sys
+import tempfile
 from pathlib import Path
-from utils.archives import extract_tar_file, extract_zip_file
-from utils.data import get_data
-from utils.downloader import download
-from utils.checksums import hash_sha256
-from utils.misc import get_file_name_from_url
+
 import requests
 from config import INSTALL_PATH
-import tempfile
+
+from utils.archives import extract_tar_file, extract_zip_file
+from utils.checksums import hash_sha256
+from utils.data import get_data
+from utils.downloader import download
+from utils.misc import get_file_name_from_url
 
 TOOL_NAME = "starship"
 DATA = get_data(TOOL_NAME)
