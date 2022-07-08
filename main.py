@@ -21,21 +21,39 @@ Mostly no code should be run when importing the file, instead should
 be in the `install()` function.
 """
 import importlib
+import logging
 import os
 import sys
+import argparse
 from pathlib import Path
 
 from rich import print
+from rich.logging import RichHandler
 
+LOG_FORMAT = "%(message)s"
 TOOLS_DIR = Path(__file__).parent / "tools"
 
 # Add TOOLS_DIR to sys.path
 sys.path.append(os.fspath(TOOLS_DIR))
 
 
-def main():
+def main(**kwargs):
     """Main entry function that can be called."""
+    if kwargs.get("debug"):
+        log_level = logging.DEBUG
+    else:
+        log_level = logging.INFO
+
+    logging.basicConfig(
+        level=log_level,
+        format=LOG_FORMAT,
+        datefmt="[%X]",
+        handlers=[RichHandler(rich_tracebacks=True)],
+    )
     for tool in TOOLS_DIR.iterdir():
+        if tool.name == "config.py":
+            # skip config.py
+            continue
         ret = 1
         if tool.is_file() and tool.name.endswith(".py"):
             tool_name = tool.name[:-3]
@@ -53,4 +71,6 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    parser = argparse.ArgumentParser(description="Install tools from `tools/`.")
+    parser.add_argument("--debug", action="store_true", help="Enable debug mode.")
+    sys.exit(main(**vars(parser.parse_args())))

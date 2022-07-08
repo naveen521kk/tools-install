@@ -1,3 +1,4 @@
+import logging
 import os
 import shutil
 from pathlib import Path
@@ -6,9 +7,10 @@ import requests
 from rich.progress import Progress
 
 from . import cache
-
+log = logging.getLogger(__name__)
 
 def _download_from_url(url: str, file_path: Path) -> bool:
+    log.info(f"Downloading {url} to {file_path}")
     max_value = 100
     with Progress(transient=True) as progress:
         with requests.get(url, stream=True) as r:
