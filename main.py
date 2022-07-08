@@ -36,11 +36,17 @@ sys.path.append(os.fspath(TOOLS_DIR))
 def main():
     """Main entry function that can be called."""
     for tool in TOOLS_DIR.iterdir():
+        ret = 1
         if tool.is_file() and tool.name.endswith(".py"):
             tool_name = tool.name[:-3]
             module = importlib.import_module(tool_name)
             if hasattr(module, "IS_TOOL") and module.IS_TOOL:
-                module.install()
+                ret = module.install()
+                if ret == 1:
+                    print(f"{tool_name} had error while installing.")
+                    print(f"Please check the logs for more information.")
+                else:
+                    print(f"{tool_name} installed successfully.")
             else:
                 print(f"{tool} isn't a tool. Skipping...")
     return 0
