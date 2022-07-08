@@ -30,7 +30,7 @@ from pathlib import Path
 from rich import print
 from rich.logging import RichHandler
 
-LOG_FORMAT = "%(message)s"
+LOG_FORMAT = "%(asctime)s - [%(levelname)s] - %(filename)s - %(message)s"
 TOOLS_DIR = Path(__file__).parent / "tools"
 
 # Add TOOLS_DIR to sys.path
@@ -43,12 +43,13 @@ def main(**kwargs):
         log_level = logging.DEBUG
     else:
         log_level = logging.INFO
-
+    _logging_handlers = [RichHandler(rich_tracebacks=True)]
+    if not kwargs.get("no_log_to_file"):
+        _logging_handlers.append(logging.FileHandler("tools.log", encoding="utf-8"))
     logging.basicConfig(
         level=log_level,
         format=LOG_FORMAT,
-        datefmt="[%X]",
-        handlers=[RichHandler(rich_tracebacks=True)],
+        handlers=_logging_handlers,
     )
     for tool in TOOLS_DIR.iterdir():
         if tool.name == "config.py":
@@ -73,4 +74,5 @@ def main(**kwargs):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Install tools from `tools/`.")
     parser.add_argument("--debug", action="store_true", help="Enable debug mode.")
+    parser.add_argument("--no-log-to-file", action="store_true", help="Don't log to file.")
     sys.exit(main(**vars(parser.parse_args())))
