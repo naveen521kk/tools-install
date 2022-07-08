@@ -1,5 +1,7 @@
 import os
+
 from tools.config import DATA, INSTALL_PATH
+
 
 def test_config_data():
     assert DATA["INSTALL_PATHS"]["linux"] == "~/.local/bin"

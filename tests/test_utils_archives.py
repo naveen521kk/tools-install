@@ -1,5 +1,7 @@
-from tools.utils.archives import extract_tar_file, extract_zip_file
 from pathlib import Path
+
+from tools.utils.archives import extract_tar_file, extract_zip_file
+
 
 def test_extract_tar_file(tmpdir):
     tmp_dir = Path(tmpdir)
