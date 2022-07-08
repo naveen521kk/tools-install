@@ -1,3 +1,4 @@
 [INSTALL_PATHS]
 win32 = 'C:\tools\bin'
 linux = '~/.local/bin'
+darwin = '~/.local/bin'
