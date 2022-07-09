@@ -20,4 +20,4 @@ jobs:
 
       - name: Run Test
         run: |
-          docker run -it --rm --name tools-base-test tools-base
+          docker run tools-base
