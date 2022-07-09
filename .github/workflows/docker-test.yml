@@ -17,3 +17,7 @@ jobs:
       - name: Build image
         run: |
           docker build -t tools-base -f ./.ci/Dockerfile.windows .
+
+      - name: Run Test
+        run: |
+          docker run -it --rm --name tools-base-test tools-base
