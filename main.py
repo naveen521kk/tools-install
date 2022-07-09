@@ -26,6 +26,7 @@ import os
 import sys
 import argparse
 from pathlib import Path
+import traceback
 
 from rich import print
 from rich.logging import RichHandler
@@ -60,14 +61,20 @@ def main(**kwargs):
             tool_name = tool.name[:-3]
             module = importlib.import_module(tool_name)
             if hasattr(module, "IS_TOOL") and module.IS_TOOL:
-                ret = module.install()
+                try:
+                    ret = module.install()
+                except Exception as e:
+                    traceback.print_exc()
+                    print(e)
+                    ret = 1
                 if ret == 1:
                     print(f"{tool_name} had error while installing.")
-                    print(f"Please check the logs for more information.")
+                    print("Please check the logs for more information.")
                 else:
                     print(f"{tool_name} installed successfully.")
             else:
                 print(f"{tool} isn't a tool. Skipping...")
+    print("[green]All tools installed successfully.[/green]")
     return 0
 
 
