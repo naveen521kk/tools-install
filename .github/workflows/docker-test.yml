@@ -14,10 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - uses: actions/download-artifact@v2
-        with:
-          name: installer
-
       - name: Build image
         run: |
           docker build -t tools-base -f ./.ci/Dockerfile.windows .
