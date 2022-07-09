@@ -17,8 +17,3 @@ jobs:
       - name: Build image
         run: |
           docker build -t tools-base -f ./.ci/Dockerfile.windows .
-
-      - name: Test without Login Shell
-        run: |
-          docker run msys2-base C:\msys64\usr\bin\pacman.exe -Syy
-          docker run msys2-base C:\msys64\usr\bin\pacman.exe --noconfirm -S vim
