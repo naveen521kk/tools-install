@@ -65,7 +65,7 @@ def install() -> int:
             raise ValueError("Checksum mismatch. Please check if the issue is caused by cache, or update the checksum.")
         if file.name.endswith('.zip'):
             extract_zip_file(file, tmpdir)
-            shutil.copytree(tmpdir / ("starship" + EXE_EXT), install_path)
+            shutil.copy(tmpdir / ("starship" + EXE_EXT), install_path)
         else:
             extract_tar_file(file, tmpdir)
             shutil.copy(tmpdir / ("starship" + EXE_EXT), install_path)
