@@ -20,3 +20,4 @@ ensure_install_path(INSTALL_PATH)
 log.info(
     f"Installation Path: {INSTALL_PATH}",
 )
+EXE_EXT = '.exe' if sys.platform.startswith('win32') else ''
