@@ -30,7 +30,7 @@ from pathlib import Path
 from rich import print
 from rich.logging import RichHandler
 
-LOG_FORMAT = "%(asctime)s - [%(levelname)s] - %(filename)s - %(message)s"
+LOG_FORMAT = "%(message)s"
 TOOLS_DIR = Path(__file__).parent / "tools"
 
 # Add TOOLS_DIR to sys.path
