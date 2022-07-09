@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import errno
+import subprocess
 
 def get_file_name_from_url(url: str) -> str:
     return url.split("/")[-1]
