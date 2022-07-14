@@ -33,7 +33,7 @@ def check_if_elevated() -> bool:
         # https://docs.microsoft.com/en-us/windows/win32/api/shlobj_core/nf-shlobj_core-isuseranadmin
         _shell32 = ctypes.windll.shell32
         _is_admin = _shell32.IsUserAnAdmin
-        _is_admin.restype = (int, )
+        _is_admin.restype = int
         try:
             return bool(_is_admin())
         except OSError:
