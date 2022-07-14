@@ -5,7 +5,7 @@ from pathlib import Path
 import errno
 import subprocess
 import shutil
-from ctypes import windll
+import ctypes
 
 def get_file_name_from_url(url: str) -> str:
     return url.split("/")[-1]
@@ -31,7 +31,7 @@ def check_if_elevated() -> bool:
 
         # See 
         # https://docs.microsoft.com/en-us/windows/win32/api/shlobj_core/nf-shlobj_core-isuseranadmin
-        _shell32 = windll.shell32
+        _shell32 = ctypes.windll.shell32
         _is_admin = _shell32.IsUserAnAdmin()
         _is_admin.restype = (int, )
         try:
